@@ -43,6 +43,11 @@ void exec_hbfind(struct polymer* poly)
           if(strcmp(poly->residues[i].name, "CYS") == 0){
               cys_addh(poly->residues + i);
           }
+          else if(strcmp(poly->residues[i].name, "ASP") == 0){
+              asp_addh(poly->residues + i);
+          }
+
+
       }
 
  /*     
