@@ -40,28 +40,28 @@ void exec_hbfind(struct polymer* poly)
      
            
       for(int i=0; i<poly->numres; ++i){
-          if(strcmp(poly->residues[i].name, "CYS") == 0){
+          /*if(strcmp(poly->residues[i].name, "CYS") == 0){
               cys_addh(poly->residues + i);
-          }
-          else if(strcmp(poly->residues[i].name, "ASP") == 0){
+          }*/
+           if(strcmp(poly->residues[i].name, "ASP") == 0){
               asp_addh(poly->residues + i);
           }
           else if(strcmp(poly->residues[i].name, "GLU") == 0){
               glu_addh(poly->residues + i);
           }
-          /*else if(strcmp(poly->residues[i].name, "PHE") == 0){
+          else if(strcmp(poly->residues[i].name, "PHE") == 0){
               phe_addh(poly->residues + i);
-          }*/ 
+          }
           else if(strcmp(poly->residues[i].name, "GLY") == 0){
               gly_addh(poly->residues + i);
           }
          
-           /*else if(strcmp(poly->residues[i].name, "HIS") == 0){
+           else if(strcmp(poly->residues[i].name, "HIS") == 0){
               his_addh(poly->residues + i);
-          }*/
-         /* else if(strcmp(poly->residues[i].name, "ILE") == 0){
+          }
+            else if(strcmp(poly->residues[i].name, "ILE") == 0){
               ile_addh(poly->residues + i);
-          }*/
+          }
          /* else if(strcmp(poly->residues[i].name, "ASN") == 0){
               asn_addh(poly->residues + i);
           }*/
