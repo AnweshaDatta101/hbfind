@@ -37,5 +37,6 @@ void phe_addh(struct residue* res);
 void gly_addh(struct residue* res);
 void his_addh(struct residue* res);
 //void ile_addh(struct residue* res);
-void asn_addh(struct residue* res);
+//void asn_addh(struct residue* res);
+//void lys_addh(struct residue* res);
 #endif   /* ----- #ifndef __hbfind_H__  ----- */

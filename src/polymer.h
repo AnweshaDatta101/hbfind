@@ -21,7 +21,7 @@
 
 #include "biodefs.h"
 #include "bioio.h"
-#define MAX_HYDRO (10)
+#define MAX_HYDRO (15)
 struct residue{
       struct atom* atoms;
       int size;
