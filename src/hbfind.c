@@ -450,7 +450,7 @@ void his_addh(struct residue* res)
       Point3d HD2= fix_atom(CB,CG,CD2, hbdist, hbangle, tors_ang3+torad(180.0));
       residue_addh(res, HD2, "HD2");
 }
-/*void ile_addh(struct residue *res)
+void ile_addh(struct residue *res)
 {
       printf("Trace... cys exec\n");
       Point3d N;
@@ -495,8 +495,8 @@ void his_addh(struct residue* res)
             }
       }
       if (count != 6)
-      { *//* Exception Handling */
-        /*   fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+      { /* Exception Handling */
+            fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
             exit(EXIT_FAILURE);
       }
       double tors_ang = torsion_angle(CG2,CB,CA,N);
@@ -506,31 +506,31 @@ void his_addh(struct residue* res)
       double hbdist = 0.97;
       Point3d HA = fix_atom(CG2, CB, CA, 0.97, torad(90.0), tors_ang + adjust);
        residue_addh(res, HA, "HA");
-      Point3d HB = fix_atom(N, CA, CB, hbdist, hbangle, tors_ang + adjust);
+      Point3d HB = fix_atom(N, CA, CB, hbdist, hbangle, tors_ang -torad(90.0));
        residue_addh(res, HB, "HB");
-      Point3d HG22 = fix_atom(CA, CB, CG2, 1.20, torad(90.0), torad(180.0)+adjust);
+      Point3d HG22 = fix_atom(CA, CB, CG2,hbdist, torad(90.0), torad(157.0)+adjust);
        residue_addh(res, HG22, "HG22");
-      Point3d HG21 = fix_atom(CA, CB, CG2, 1.20, torad(90.0), torad(180.0));
+      Point3d HG21 = fix_atom(CA, CB, CG2,hbdist, torad(144.0), torad(157.0)+torad(90.0));
        residue_addh(res, HG21, "HG21");
-      Point3d HG23= fix_atom(CA, CB, CG2, 1.20, torad(90.0), torad(180.0)-adjust);
+      Point3d HG23= fix_atom(CA, CB, CG2, hbdist, torad(90.0), torad(157.0)-adjust);
        residue_addh(res, HG23, "HG23");
-       Point3d H = fix_atom(CB, CA, N, 1.20, torad(90.0), torad(180.0));
+       Point3d H = fix_atom(CB, CA, N, hbdist, torad(110.60), torad(70.0)-adjust);
        residue_addh(res, H, "H");
        tors_ang = torsion_angle(CA,CB,CG2,CD1);
       Point3d H12 = fix_atom(CA,CB,CG1, hbdist, hbangle, tors_ang + adjust);
       residue_addh(res, H12, "H12");
       Point3d H13 = fix_atom(CA,CB,CG1, hbdist, hbangle, tors_ang - adjust);
       residue_addh(res, H13, "H13");
-       Point3d HD1 = fix_atom(CB, CG1, CD1, 1.20, torad(90.0), torad(162.95)+adjust);
+       Point3d HD1 = fix_atom(CB, CG1, CD1,hbdist, torad(110.0), torad(180.0)+adjust);
        residue_addh(res, HD1, "HD1");
-      Point3d HD2 = fix_atom( CB, CG1,CD1, 1.20, torad(90.0), torad(162.95));
+      Point3d HD2 = fix_atom( CB, CG1,CD1,hbdist , torad(110.0), torad(180.0));
        residue_addh(res, HD2, "HD2");
-      Point3d HD3= fix_atom( CB, CG1,CD1, 1.20, torad(90.0), torad(162.95)-adjust);
+      Point3d HD3= fix_atom( CB, CG1,CD1, hbdist, torad(110.0), torad(180.0)-adjust);
        residue_addh(res, HD3, "HD3");
     
       
-}*/
-/*void asn_addh(struct residue *res)
+}
+void asn_addh(struct residue *res)
 {
       printf("Trace... asp exec\n");
       Point3d N;
@@ -575,8 +575,8 @@ void his_addh(struct residue* res)
             }
       }
       if (count != 6)
-      {*/ /* Exception Handling */
-           /* fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+      { /* Exception Handling */
+            fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
             exit(EXIT_FAILURE);
       }
       double tors_ang = torsion_angle(C, CA, CB, CG);
@@ -588,21 +588,23 @@ void his_addh(struct residue* res)
       residue_addh(res, HB1, "HB1");
       Point3d HB2 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang - adjust);
       residue_addh(res, HB2, "HB2");
-      Point3d HA = fix_atom(CG, CB, CA, hbdist, hbangle, tors_ang + adjust);
+      Point3d HA = fix_atom(CG, CB, CA, hbdist, hbangle, tors_ang -torad(100.0));
       residue_addh(res, HA, "HA");
       Point3d H = fix_atom(CB, CA, N, 1.20, torad(111.37), torad(180.0)+adjust);
       residue_addh(res, H, "H");
-      Point3d HN1 = fix_atom(CB, CG, ND2, 1.20, torad(111.37), torad(180.0)+adjust);
+      Point3d H21 = fix_atom(CB, CG, ND2, 1.20, torad(120.0), torad(130.0)+torad(150.0));
 
-      residue_addh(res, HN1, "HN1");
-      Point3d HN2 = fix_atom(CB, CG, ND2, 1.20, torad(111.37), torad(180.0)-adjust);
+      residue_addh(res, H21, "H21");
+      Point3d H22 = fix_atom(CB, CG, ND2, 1.20, torad(120.0), torad(130.0)-torad(150.0));
 
-      residue_addh(res, HN2, "HN2");
+      residue_addh(res, H22, "H22");
 
-}*/
-/*void lys_addh(struct residue *res)
+}
+void lys_addh(struct residue *res)
 {
       printf("Trace... cys exec\n");
+      Point3d N;
+      Point3d C;
       Point3d CA;
       Point3d CB;
       Point3d CG;
@@ -612,7 +614,17 @@ void his_addh(struct residue* res)
       int count = 0;
       for (int i = 0; i < res->size; ++i)
       {
-            if (strcmp(res->atoms[i].loc, "CA") == 0)
+            if (strcmp(res->atoms[i].loc, "N") == 0)
+            {
+                  N= res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "C") == 0)
+            {
+                  C = res->atoms[i].center;
+                  count++;
+            }
+           else if (strcmp(res->atoms[i].loc, "CA") == 0)
             {
                   CA = res->atoms[i].center;
                   count++;
@@ -643,38 +655,472 @@ void his_addh(struct residue* res)
                   count++;
             }
       }
-      if (count != 6)
-      {*/ /* Exception Handling */
-         /*  fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+      if (count != 8)
+      { /* Exception Handling */
+            fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
             exit(EXIT_FAILURE);
       }
-      double tors_ang = torsion_angle(CA, CB, CG,CD);
+      double tors_ang = torsion_angle(C,CA, CB, CG);
 
       double adjust = torad(120.0);
       double hbangle = torad(106.97);
       double hbdist = 0.97;
-      Point3d HG1 = fix_atom(CA, CB,CG, hbdist, hbangle, tors_ang + adjust);
-      residue_addh(res, HG1, "HG1");
-      Point3d HG2 = fix_atom(CA, CB,CG, hbdist, hbangle, tors_ang - adjust);
-      residue_addh(res, HG2, "HG2");
-      Point3d HB1 = fix_atom(CD, CG,CB, hbdist, hbangle, tors_ang + adjust);
+      Point3d HA = fix_atom(CG, CB,CA, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HA, "HA");
+       Point3d HB1 = fix_atom(CD, CG,CB, hbdist, hbangle, tors_ang + adjust);
       residue_addh(res, HB1, "HB1");
-      Point3d HB2 = fix_atom(CD, CG,CB, hbdist, hbangle, tors_ang - adjust);
+      Point3d HB2 = fix_atom(C, CA,CB, hbdist, hbangle, tors_ang - adjust);
       residue_addh(res, HB2, "HB2");
 
-      tors_ang = torsion_angle(CG,CD,CE,NZ);
-      Point3d HD1 = fix_atom(NZ,CE,CD, hbdist, hbangle, tors_ang + adjust);
-      residue_addh(res, HD1, "HD1");
-      Point3d HD2 = fix_atom(NZ,CE,CD, hbdist, hbangle, tors_ang - adjust);
+      tors_ang = torsion_angle(CB, CG,CB,CE);
+      Point3d HG2 = fix_atom(CE,CD,CG, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HG2, "HG2");
+      Point3d HG3 = fix_atom(CE, CD,CG, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HG3, "HG3");
+      Point3d HD2 = fix_atom(NZ,CE,CD, hbdist, hbangle, tors_ang + adjust);
       residue_addh(res, HD2, "HD2");
-      Point3d HE1 = fix_atom(CG,CD,CE, hbdist, hbangle, tors_ang + adjust);
+      Point3d HD3 = fix_atom(NZ,CE,CD, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HD3, "HD3");
+
+      Point3d HE1 = fix_atom(CG,CD,CE, 1.20, torad(90.0), torad(180.0) + adjust);
       residue_addh(res, HE1, "HE1");
-      Point3d HE2 = fix_atom(CG,CD,CE, hbdist, hbangle, tors_ang - adjust);
+      Point3d HE2 = fix_atom(CG,CD,CE, 1.20, torad(90.0), torad(180.0) - adjust);
       residue_addh(res, HE2, "HE2");
-      Point3d NZ1 = fix_atom(CD, CE, NZ, 1.20, torad(90.0), torad(180.0)+adjust);
-      residue_addh(res, NZ1, "NZ1");
-      Point3d NZ2 = fix_atom(CD, CE, NZ, 1.20, torad(90.0), torad(180.0)+torad(90.0));
-      residue_addh(res, NZ2, "NZ2");
-      Point3d NZ3 = fix_atom(CD, CE, NZ, 1.20, torad(90.0), torad(180.0)-adjust);
-      residue_addh(res, NZ3, "NZ3");
-}*/
+
+      Point3d HZ1 = fix_atom(CD, CE, NZ,1.20,torad(90.0), torad(180.0)+adjust);
+      residue_addh(res, HZ1, "HZ1");
+      Point3d HZ2 = fix_atom(CD, CE, NZ, 1.20, torad(90.0), torad(180.0)+torad(90.0));
+      residue_addh(res, HZ2, "HZ2");
+      Point3d HZ3 = fix_atom(CD, CE, NZ, 1.20, torad(90.0), torad(180.0)-adjust);
+      residue_addh(res, HZ3, "HZ3");
+      Point3d H = fix_atom(CB, CA, N,1.20,torad(90.0), torad(180.0)+adjust);
+      residue_addh(res, H, "H");
+      
+
+}
+void leu_addh(struct residue *res)
+{
+      printf("Trace... cys exec\n");
+      Point3d C;
+      Point3d N;
+      Point3d CD2;
+      Point3d CD1;
+      Point3d CA;
+      Point3d CB;
+      Point3d CG;
+      int count = 0;
+      for (int i = 0; i < res->size; ++i)
+      {
+            if (strcmp(res->atoms[i].loc, "N") == 0)
+            {
+                  N = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "C") == 0)
+            {
+                  C = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CA") == 0)
+            {
+                  CA = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CB") == 0)
+            {
+                  CB = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CG") == 0)
+            {
+                  CG = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CD1") == 0)
+            {
+                  CD1 = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CD2") == 0)
+            {
+                  CD2 = res->atoms[i].center;
+                  count++;
+            }
+      }      
+      if (count != 7)
+      { /* Exception Handling */
+           fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+            exit(EXIT_FAILURE);
+      }
+      double tors_ang = torsion_angle(C, CA, CB, CG);
+
+      double adjust = torad(120.0);
+      double hbangle = torad(106.97);
+      double hbdist = 0.97;
+      Point3d HA = fix_atom(CG, CB, CA, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HA, "HA");
+      Point3d HB1 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HB1, "HB1");
+      Point3d HB2 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HB2, "HB2");
+
+      tors_ang = torsion_angle(CA, CB, CG,CD1);
+      Point3d HG = fix_atom(CA, CB, CG,hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HG, "HG");
+      Point3d H11 = fix_atom(CB, CG,CD1, 0.97, torad(90.0), torad(160.0) + adjust);
+      residue_addh(res, H11, "H11");
+       Point3d H12 = fix_atom(CB, CG,CD1, 0.97, torad(90.0), torad(160.0) +torad(90.0));
+      residue_addh(res, H12, "H12");
+       Point3d H13 = fix_atom(CB, CG,CD1, 0.97, torad(90.0), torad(160.0) - adjust);
+      residue_addh(res, H13, "H13");
+      Point3d H21 = fix_atom(CB,CG,CD2, 0.97, torad(90.0), torad(130.0) + adjust);
+      residue_addh(res, H21, "H21");
+      Point3d H22 = fix_atom(CB, CG,CD2, 0.97, torad(90.0), torad(130.0) +torad(90.0));
+      residue_addh(res, H22, "H22");
+       Point3d H23 = fix_atom(CB, CG,CD1, 0.97, torad(90.0), torad(130.0) - adjust);
+      residue_addh(res, H23, "H23");
+      Point3d H = fix_atom(C, CA, N,1.20,torad(90.0), torad(180.0)+adjust);
+      residue_addh(res, H, "H");
+      
+}
+void met_addh(struct residue *res)
+{
+      printf("Trace... cys exec\n");
+      Point3d C;
+      Point3d N;
+      Point3d CA;
+      Point3d CB;
+      Point3d CG;
+      Point3d SD;
+      Point3d CE;
+      int count = 0;
+      for (int i = 0; i < res->size; ++i)
+      {
+            if (strcmp(res->atoms[i].loc, "N") == 0)
+            {
+                  N = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "C") == 0)
+            {
+                  C = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CA") == 0)
+            {
+                  CA = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CB") == 0)
+            {
+                  CB = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CG") == 0)
+            {
+                  CG = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "SD") == 0)
+            {
+                  SD = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CE") == 0)
+            {
+                  CE = res->atoms[i].center;
+                  count++;
+            }
+            
+       }
+      if (count != 7)
+      { /* Exception Handling */
+           fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+            exit(EXIT_FAILURE);
+      }
+      double tors_ang = torsion_angle(C, CA, CB, CG);
+
+      double adjust = torad(120.0);
+      double hbangle = torad(106.97);
+      double hbdist = 0.97;
+      Point3d HA =fix_atom(CG, CB, CA, hbdist, hbangle, tors_ang -adjust);
+      residue_addh(res, HA, "HA");
+      Point3d HB1 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HB1, "HB1");
+      Point3d HB2 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HB2, "HB2");
+
+      tors_ang = torsion_angle(CB, CG, SD, CE);
+      Point3d HG1 = fix_atom(CE, SD, CG, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HG1, "HG1");
+      Point3d HG2 = fix_atom(CE,SD, CG, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HG2, "HG2");
+
+      Point3d H = fix_atom(CB, CA, N, 0.97, torad(105.90), torad(180.0)+torad(150.0));
+      residue_addh(res, H, "H");
+      Point3d HE1 = fix_atom(CG,SD,CE, 0.97, torad(101.95),torad(60.0) + adjust);
+      residue_addh(res, HE1, "HE1");
+      Point3d HE2 = fix_atom(CG,SD,CE ,0.97,torad(101.95) ,torad(60.0)+torad(40.0));
+      residue_addh(res, HE2, "HE2");
+      Point3d HE3 = fix_atom(CG, SD,CE, 0.97, torad(101.95) ,torad(60.0)- adjust);
+      residue_addh(res, HE3, "HE3");
+}  
+void pro_addh(struct residue *res)
+{
+      printf("Trace... cys exec\n");
+      Point3d N;
+      Point3d CA;
+      Point3d CB;
+      Point3d CG;
+      Point3d CD;
+      int count = 0;
+      for (int i = 0; i < res->size; ++i)
+      {
+            if (strcmp(res->atoms[i].loc, "N") == 0)
+            {
+                  N = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CA") == 0)
+            {
+                  CA = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CB") == 0)
+            {
+                  CB = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CG") == 0)
+            {
+                  CG = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CD") == 0)
+            {
+                  CD = res->atoms[i].center;
+                  count++;
+            }
+      }
+      if (count != 5)
+      { /* Exception Handling */
+           fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+            exit(EXIT_FAILURE);
+      }
+      double tors_ang = torsion_angle(CB,CG,CD,N);
+
+      double adjust = torad(120.0);
+      double hbangle = torad(106.97);
+      double hbdist = 0.97;
+      Point3d HD2 = fix_atom(CB,CG,CD, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HD2, "HD2");
+      Point3d HD3 = fix_atom(CB,CG,CD, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HD3, "HD3");
+      Point3d HG2 = fix_atom(N,CD,CG, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HG2, "HG2");
+      Point3d HG3 = fix_atom(N,CD,CG ,hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HG3, "HG3");
+      tors_ang = torsion_angle(CG,CB,CA,N);
+      Point3d HB2 = fix_atom(N,CA,CB, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HB2, "HB2");
+      Point3d HB3 = fix_atom(N,CA,CB, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HB3, "HB3");
+      Point3d HA = fix_atom(CG,CB,CA, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HA, "HA");
+}
+void gln_addh(struct residue *res)
+{
+      printf("Trace... cys exec\n");
+      Point3d O;
+      Point3d C;
+      Point3d N;
+      Point3d CA;
+      Point3d CB;
+      Point3d CG;
+      Point3d CD;
+      Point3d NE2;
+      int count = 0;
+      for (int i = 0; i < res->size; ++i)
+      {
+            if (strcmp(res->atoms[i].loc, "O") == 0)
+            {
+                  O = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "C") == 0)
+            {
+                  C = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "N") == 0)
+            {
+                  N= res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CA") == 0)
+            {
+                  CA = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CB") == 0)
+            {
+                  CB = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CG") == 0)
+            {
+                  CG = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CD") == 0)
+            {
+                  CD = res->atoms[i].center;
+                  count++;
+            }
+          
+            else if (strcmp(res->atoms[i].loc, "NE2") == 0)
+            {
+                  NE2 = res->atoms[i].center;
+                  count++;
+            }
+       }
+      if (count != 8)
+      { /* Exception Handling */
+           fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+            exit(EXIT_FAILURE);
+      }
+      double tors_ang = torsion_angle( CA, CB, CG,CD);
+
+      double adjust = torad(120.0);
+      double hbangle = torad(106.97);
+      double hbdist = 0.97;
+      Point3d HB2 =fix_atom(CD,CG, CB, hbdist, hbangle, tors_ang +adjust);
+      residue_addh(res, HB2, "HB2");
+      Point3d HB3 =fix_atom(CD,CG, CB, hbdist, hbangle, tors_ang -adjust);
+      residue_addh(res, HB3, "HB3");
+      Point3d HG2 = fix_atom(CA, CB,CG, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HG2, "HG2");
+      Point3d HG3 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HG3, "HG3");
+
+      tors_ang = torsion_angle(O,C,CA,N);
+      Point3d HA = fix_atom(O,C,CA, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HA, "HA");
+      Point3d H = fix_atom(C, CA, N, 0.97, torad(115.90), torad(170.0)+torad(150.0));
+      residue_addh(res, H, "H");
+      Point3d H21 = fix_atom(CG,CD,NE2, 0.97, torad(119.95),torad(225.0) + adjust);
+      residue_addh(res, H21, "H21");
+      Point3d H22 = fix_atom(CG,CD,NE2 ,0.97,torad(119.95) ,torad(225.0)-adjust);
+      residue_addh(res, H22, "H22");
+      
+} 
+void arg_addh(struct residue *res)
+{
+      printf("Trace... cys exec\n");
+      Point3d C;
+      Point3d CA;
+      Point3d N;
+      Point3d CB;
+      Point3d CG;
+      Point3d CD;
+      Point3d NE;
+      Point3d CZ;
+      Point3d NH1;
+      Point3d NH2;
+      int count = 0;
+      for (int i = 0; i < res->size; ++i)
+      {
+            if (strcmp(res->atoms[i].loc, "C") == 0)
+            {
+                  C = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CA") == 0)
+            {
+                  CA = res->atoms[i].center;
+                  count++;
+            }
+             else if (strcmp(res->atoms[i].loc, "N") == 0)
+            {
+                  N= res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CB") == 0)
+            {
+                  CB = res->atoms[i].center;
+                  count++;
+            }
+            else if (strcmp(res->atoms[i].loc, "CG") == 0)
+            {
+                  CG = res->atoms[i].center;
+                  count++;
+            }
+             else if (strcmp(res->atoms[i].loc, "CD") == 0)
+            {
+                  CD= res->atoms[i].center;
+                  count++;
+            }
+             else if (strcmp(res->atoms[i].loc, "NE") == 0)
+            {
+                  NE= res->atoms[i].center;
+                  count++;
+            }
+             else if (strcmp(res->atoms[i].loc, "CZ") == 0)
+            {
+                  CZ = res->atoms[i].center;
+                  count++;
+            }
+             else if (strcmp(res->atoms[i].loc, "NH1") == 0)
+            {
+                  NH1 = res->atoms[i].center;
+                  count++;
+            }
+             else if (strcmp(res->atoms[i].loc, "NH2") == 0)
+            {
+                  NH2 = res->atoms[i].center;
+                  count++;
+            }
+      }
+      if (count != 10)
+      { /* Exception Handling */
+           fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+            exit(EXIT_FAILURE);
+      }
+      double tors_ang = torsion_angle(C, CA, CB, CG);
+
+      double adjust = torad(120.0);
+      double hbangle = torad(106.97);
+      double hbdist = 0.97;
+      Point3d HB2 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HB2, "HB2");
+      Point3d HB3 = fix_atom(C, CA, CB, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HB3, "HB3");
+      Point3d HA = fix_atom(CG, CB, CA, hbdist, hbangle, tors_ang +adjust);
+      residue_addh(res, HA, "HA");
+
+      tors_ang = torsion_angle(CB,CG,CD,NE);
+      Point3d HG2 = fix_atom(NE,CD,CG, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HG2, "HG2");
+      Point3d HG3 = fix_atom(NE,CD,CG, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HG3, "HG3");
+      Point3d HD2 = fix_atom(CB,CG,CD, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HD2, "HD2");
+      Point3d HD3 = fix_atom(CB,CG,CD, hbdist, hbangle, tors_ang - adjust);
+      residue_addh(res, HD3,"HD3");
+
+      tors_ang = torsion_angle(CD,NE,CZ,NH2);
+      Point3d HE = fix_atom(NH2,CZ,NE, hbdist, hbangle, tors_ang + adjust);
+      residue_addh(res, HE,"HE");
+
+      Point3d H21 = fix_atom(NE,CZ,NH2, 1.20, torad(120.0), torad(180.0)+adjust);
+      residue_addh(res, H21, "H21");
+      Point3d H22 = fix_atom(NE,CZ,NH2, 1.20, torad(120.0), torad(180.0)-adjust);
+      residue_addh(res, H22, "H22");
+      Point3d H11 = fix_atom(NE,CZ,NH1, 1.20, torad(120.0), torad(180.0)+adjust);
+      residue_addh(res, H11, "H11");
+      Point3d H12 = fix_atom(NE,CZ,NH1, 1.20, torad(120.0), torad(180.0)-adjust);
+      residue_addh(res, H12, "H12");
+
+      Point3d H = fix_atom(C, CA,N, 0.97, torad(112.76), torad(115.92) + adjust);
+      residue_addh(res, H, "H");
+}    

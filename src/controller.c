@@ -59,16 +59,32 @@ void exec_hbfind(struct polymer* poly)
            else if(strcmp(poly->residues[i].name, "HIS") == 0){
               his_addh(poly->residues + i);
           }
-          /* else if(strcmp(poly->residues[i].name, "ILE") == 0){
+           else if(strcmp(poly->residues[i].name, "ILE") == 0){
               ile_addh(poly->residues + i);
-          }*/
-          /*else if(strcmp(poly->residues[i].name, "ASN") == 0){
+          }
+          else if(strcmp(poly->residues[i].name, "ASN") == 0){
               asn_addh(poly->residues + i);
-          }*/
-          /*else if(strcmp(poly->residues[i].name, "LYS") == 0){
+          }
+          else if(strcmp(poly->residues[i].name, "LYS") == 0){
               lys_addh(poly->residues + i);
-          }*/
+          }
+          else if(strcmp(poly->residues[i].name, "LEU") == 0){
+              leu_addh(poly->residues + i);
+          }
 
+        else if(strcmp(poly->residues[i].name, "MET") == 0){
+              met_addh(poly->residues + i);
+          }
+        else if(strcmp(poly->residues[i].name, "PRO") == 0){
+              pro_addh(poly->residues + i);
+          }
+
+         else if(strcmp(poly->residues[i].name, "GLN") == 0){
+              gln_addh(poly->residues + i);
+          }
+          else if(strcmp(poly->residues[i].name, "ARG") == 0){
+              arg_addh(poly->residues + i);
+          }
 
 
       }
