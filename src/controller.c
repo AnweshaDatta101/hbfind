@@ -85,9 +85,23 @@ void exec_hbfind(struct polymer* poly)
           else if(strcmp(poly->residues[i].name, "ARG") == 0){
               arg_addh(poly->residues + i);
           }
+         else if(strcmp(poly->residues[i].name, "SER") == 0){
+              ser_addh(poly->residues + i);
+          }
 
-
-      }
+        else if(strcmp(poly->residues[i].name, "THR") == 0){
+              thr_addh(poly->residues + i);
+          }
+          else if(strcmp(poly->residues[i].name, "VAL") == 0){
+              val_addh(poly->residues + i);
+          }
+       else if(strcmp(poly->residues[i].name, "TRP") == 0){
+              trp_addh(poly->residues + i);
+          }
+       else if(strcmp(poly->residues[i].name, "TYR") == 0){
+              tyr_addh(poly->residues + i);
+          }
+ }
 
  /*     
       struct kdtree kdtree;

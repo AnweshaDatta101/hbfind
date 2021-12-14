@@ -44,4 +44,9 @@ void met_addh(struct residue* res);
 void pro_addh(struct residue* res);
 void gln_addh(struct residue* res);
 void arg_addh(struct residue* res);
+void ser_addh(struct residue* res);
+void thr_addh(struct residue* res);
+void val_addh(struct residue* res);
+void trp_addh(struct residue* res);
+void tyr_addh(struct residue* res);
 #endif   /* ----- #ifndef __hbfind_H__  ----- */
