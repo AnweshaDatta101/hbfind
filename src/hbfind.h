@@ -49,4 +49,6 @@ void thr_addh(struct residue* res);
 void val_addh(struct residue* res);
 void trp_addh(struct residue* res);
 void tyr_addh(struct residue* res);
+void ade_addh(struct residue* res);
+void dg_addh(struct residue* res);
 #endif   /* ----- #ifndef __hbfind_H__  ----- */
