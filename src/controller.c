@@ -101,11 +101,14 @@ void exec_hbfind(struct polymer* poly)
         else if(strcmp(poly->residues[i].name, "TYR") == 0){
               tyr_addh(poly->residues + i);
           }
-        /*else if(strcmp(poly->residues[i].name, "ADE") == 0){
+        else if(strcmp(poly->residues[i].name, "A") == 0){
               ade_addh(poly->residues + i);
-          }*/
-        else if(strcmp(poly->residues[i].name, "ADE") == 0){
+          }
+        else if(strcmp(poly->residues[i].name, "G") == 0){
               dg_addh(poly->residues + i);
+          }
+          else if(strcmp(poly->residues[i].name, "G") == 0){
+              g_addh(poly->residues + i);
           }
  }
 

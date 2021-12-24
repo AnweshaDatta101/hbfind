@@ -1651,7 +1651,7 @@ void ade_addh(struct residue *res)
       }
       if (count != 17)
       { /* Exception Handling */
-          /* fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
+           fprintf(stderr, "Error in function %s()... All required atoms not found %d\n", __func__, count);
             exit(EXIT_FAILURE);
       }
       double tors_ang = torsion_angle(N1,C2,N3,C4);
