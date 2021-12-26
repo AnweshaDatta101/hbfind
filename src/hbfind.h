@@ -52,7 +52,7 @@ void trp_addh(struct residue* res);
 void tyr_addh(struct residue* res);
 void ade_addh(struct residue* res);
 void dg_addh(struct residue* res);
-//void g_addh(struct residue* res);
+void g_addh(struct residue* res);
 void c_addh(struct residue* res);
 void t_addh(struct residue* res);
 void u_addh(struct residue* res);
