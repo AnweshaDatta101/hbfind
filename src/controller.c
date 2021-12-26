@@ -43,6 +43,9 @@ void exec_hbfind(struct polymer* poly)
           if(strcmp(poly->residues[i].name, "CYS") == 0){
               cys_addh(poly->residues + i);
           }
+          else if(strcmp(poly->residues[i].name, "ALA") == 0){
+              ala_addh(poly->residues + i);
+          }
           else if(strcmp(poly->residues[i].name, "ASP") == 0){
               asp_addh(poly->residues + i);
           }
@@ -107,9 +110,19 @@ void exec_hbfind(struct polymer* poly)
         else if(strcmp(poly->residues[i].name, "G") == 0){
               dg_addh(poly->residues + i);
           }
-          else if(strcmp(poly->residues[i].name, "G") == 0){
+          /*else if(strcmp(poly->residues[i].name, "G") == 0){
               g_addh(poly->residues + i);
+          }*/
+          else if(strcmp(poly->residues[i].name, "C") == 0){
+              c_addh(poly->residues + i);
           }
+          else if(strcmp(poly->residues[i].name, "T") == 0){
+              t_addh(poly->residues + i);
+          }
+           else if(strcmp(poly->residues[i].name, "U") == 0){
+              u_addh(poly->residues + i);
+          }  
+
  }
 
  /*     
