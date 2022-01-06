@@ -498,7 +498,7 @@ static int guess_size_cif(FILE* fp, char* line, enum polymer_type polytype){
       int hohatm = 0;
       int ligatm = 0;
       int total  = 0;
-      while(fgets(line, 2014, fp) != NULL    &&    strncmp(line, "_atom_site.", 11) != 0){
+      while(fgets(line, 1024, fp) != NULL    &&    strncmp(line, "_atom_site.", 11) != 0){
 	    if(strncmp(line, "_refine_hist.pdbx_number_atoms_protein", 38) == 0){
 		  proatm = atoi(line+38);
 	    }else if(strncmp(line, "_refine_hist.pdbx_number_atoms_nucleic_acid", 43) == 0){
@@ -605,7 +605,7 @@ void scancif(const char* ciffile, int (*pf)(char*), const char* chain, const cha
 
       struct atom atom;
       struct atom* atomarr= NULL;
-      fprintf(stdout, "line=%s\n", line);
+      //fprintf(stdout, "line=%s\n", line);
       struct atom buffer = parse_cif_line_to_atom(line, &attribloc);
       while(!  ((modelno == NULL || buffer.model == model) && ((chain == NULL)||(strcmp(chain, buffer.chain) == 0)) && pf(buffer.resname) == 1)){
 	    if(fgets(line, 1024, fp) == NULL || line[0] == '#' ){
@@ -621,7 +621,7 @@ void scancif(const char* ciffile, int (*pf)(char*), const char* chain, const cha
 	    if(  (pf(atom.resname) == 1)     &&    ((chain == NULL) || (strcmp(chain,atom.chain) == 0))){
 		  int status = pdb_multi_occupancy(&atom, &buffer, &current, occurule);
 		  if(status == 1){
-			print_pdb_line(stdout, &current);
+			//print_pdb_line(stdout, &current);
 			insert_atom(&atomarr, &atmindx, &max_size, current);
 		  }
 	    }
@@ -631,7 +631,7 @@ void scancif(const char* ciffile, int (*pf)(char*), const char* chain, const cha
 	    dummy.occu = ' ';
 	    int status = pdb_multi_occupancy(&dummy, &buffer, &current, occurule);
 	    if(status == 1){
-		  print_pdb_line(stdout, &current);
+		  //print_pdb_line(stdout, &current);
 		  insert_atom(&atomarr, &atmindx, &max_size, current);
 	    }
       }

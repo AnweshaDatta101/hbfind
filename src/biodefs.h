@@ -66,6 +66,8 @@ int is_std_nucleic(char* res);
 int is_modi_nucleic(char* res);
 
 int is_std_amino(char* res);
+int all_residues(char* res);
+
 
 
 

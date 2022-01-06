@@ -24,47 +24,10 @@
 #include "polymer.h"
 #include "hbfind.h"
 #include "controller.h"
+#include "parameter.h"
 
 
 
-struct parameter{
-      struct{
-	    char basename[128];
-	    char ext[10];
-	    char path[512];
-	    char type;
-	    char full_name[512];
-      }file;
-      struct{
-	    double hbdist;
-	    char occu;
-      }bio;
-      struct{
-	    char os[10];
-      }sys;
-};
-
-
-void param_init(struct parameter* args)
-{
-      args->bio.occu = 'B';
-      strcpy(args->sys.os, "linux");
-}
-
-void process_argv(int argc, char* argv[], struct parameter* args, int file_index[], int* file_count)
-{
-      for(int i=1; i<argc; ++i){
-	    if(strcmp(argv[i], "-occ") == 0){
-		  if(strcmp(argv[i+1], "s") == 0){
-			args->bio.occu = 'S';
-			++i;
-		  }
-	    }else{
-		  file_index[*file_count] = i;
-		  *file_count += 1;
-	    }
-      }
-}
 
 /* 
  * ===  FUNCTION  ======================================================================
@@ -73,15 +36,17 @@ void process_argv(int argc, char* argv[], struct parameter* args, int file_index
  * =====================================================================================
  */
 
-int all_residues(char* res){
-      if(res != NULL) return 1;
-      return 0;
-}
 int main ( int argc, char *argv[] )
 {
       printf("HBFind Starts\n");
       struct parameter args;
-      int file_index[1000];
+      int* file_index = (int*) malloc(argc * sizeof(int));
+
+      if ( file_index==NULL ) {
+	    fprintf ( stderr, "\ndynamic memory allocation failed in function %s()\n" , __func__);
+	    exit (EXIT_FAILURE);
+      }
+
       int file_count = 0;
 
       param_init(&args);
@@ -110,6 +75,12 @@ int main ( int argc, char *argv[] )
 	    struct polymer polymer;
 	    polymer_create(&polymer, atoms, numatoms);
 	    exec_hbfind(&polymer);
+
+	    struct site* sites;
+	    sites_init(&sites, polymer.numres);
+	    sites_build(sites, &polymer);
+	    find_hydro_clash(sites, polymer.numres);
+	    sites_free(&sites);
 	    FILE *outfp;										/* output-file pointer */
 	    char outfp_file_name[512];		/* output-file name    */
 	    fname_join(outfp_file_name, args.file.path, args.file.basename, "_h.pdb"); 
@@ -136,5 +107,7 @@ int main ( int argc, char *argv[] )
 	    atoms = NULL;
 	    
       }
+      free(file_index);
+      file_index = NULL;
       return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */

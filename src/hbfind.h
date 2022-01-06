@@ -51,9 +51,8 @@ void val_addh(struct residue* res);
 void trp_addh(struct residue* res);
 void tyr_addh(struct residue* res);
 void ade_addh(struct residue* res);
-void dg_addh(struct residue* res);
-void g_addh(struct residue* res);
-void c_addh(struct residue* res);
-void t_addh(struct residue* res);
-void u_addh(struct residue* res);
+void gua_addh(struct residue* res);
+void cyt_addh(struct residue* res);
+void thy_addh(struct residue* res);
+void ura_addh(struct residue* res);
 #endif   /* ----- #ifndef __hbfind_H__  ----- */

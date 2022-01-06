@@ -293,4 +293,8 @@ int is_modi_nucleic(char* res){
       if(is_uravar(res) == 1) return 1;
       return 0;
 }
+int all_residues(char* res){
+      if(res != NULL) return 1;
+      return 0;
+}
 
